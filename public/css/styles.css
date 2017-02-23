@@ -1,0 +1,53 @@
+body{
+  font-family: Helvetica;
+  color: #333;
+  margin: 0;
+}
+
+nav{
+  font-size: 2em;
+  background-color: rgb(244, 215, 73);
+  text-align: center;
+  padding: 5vh;
+}
+nav a{
+  padding: 5vh;
+  text-decoration: none;
+  transition: 1s background-color;
+}
+nav a:hover{
+  background-color: rgb(209, 155, 50);
+  text-decoration: none;
+}
+#main-content{
+  margin: 0 auto;
+  margin-top: 100px;
+  background-color: #eee;
+  width: 70%;
+  height: 50vh;
+  padding: 20px;
+  padding-right: 50px;
+  border-radius: 10px;
+}
+
+#profile{
+  float: left;
+  background-position: center;
+  position: relative;
+  top:-100px;
+  left:-100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 200px;
+  border: 20px solid #fff;
+  transition: 1s;
+}
+.stewie{
+  background-image: url("/img/img.gif");
+}
+.peter{
+  background-image: url("/img/peter.gif");
+}
+#profile:hover{
+  transform: scale(1.1);
+}
