@@ -15,6 +15,8 @@ app.use(expessLayout);//Use layouts
 app.set('layout', 'layouts/main-layout');//set main layout(blueprint of section that will repeat on all pages) for all pages
 app.use(bodyParser.urlencoded( {extended: true} ));//Configure body parser for post requests
 
+const SpotifyWebApi = require('spotify-web-api-node');//Get spotify api
+const spotify = new SpotifyWebApi();//Init spotify
 
 app.get('/', (req, resp, next) =>{
   resp.render('index');//Show index page on get request with url '/'
@@ -72,11 +74,31 @@ app.post('/login', (req, res, next)=>{
   const email = req.body.email;
   const password = req.body.password;
 
-  if( email === 'pizza@gmail.com' && password === 'fish'){
+  if( email === 'pizza@gmail.com' && password === 'pizza'){
     res.render('welcome');
   }else{
     res.render('login');
   }
+});
+
+app.get('/search-spotify', (req, res, next) =>{
+    const searchTerm = req.query.searchTerm;
+
+    //Spotify api search
+    spotify.searchTracks(searchTerm, {} , (err,results) =>{
+      if(err){
+        res.send('Oh no! Error');
+        return;
+      }
+
+      const theTrack = results.body.tracks.items[0];
+
+      res.render('track-search', {
+        track : theTrack,
+        searchTerm: searchTerm
+      });
+    });
+
 });
 
 app.listen(3000, ()=>{

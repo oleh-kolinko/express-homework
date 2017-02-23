@@ -1,0 +1,9 @@
+<img src="<%= track.album.images[0].url %>" id='album-picture'>
+<h1>Track Search</h1>
+<p> You searched for:
+  <b><%= searchTerm %></b>
+ </p>
+<p>First result:
+  <b>  <%= track.name %></b>
+ </p>
+<audio src="<%=  track.preview_url %>" controls></audio>
